@@ -1,0 +1,34 @@
+Setup Server:
+
+1. gcloud compute ssh [server name]
+2. sudo apt-get -q update
+3. sudo apt-get -yq install git pigz sqlite3 python3-pip
+4. sudo pip3 install --upgrade pip3 setuptools virtualenv
+5. git clone
+6. cd Fidelityv2/
+7. virtualenv -p python3 env
+8. source env/bin/activate
+9. pip3 install -r requirements.txt
+
+Starting Server:
+
+1. gcloud compute ssh [server name]
+2. cd Fidelityv2/; source env/bin/activate; nohup python3 fetcher.py -s
+
+Killing Server:
+
+1. gcloud compute ssh [server name]
+2. ps aux | grep python | grep fetcher.py
+3. kill [PID]
+
+Copying Server:
+
+1. gcloud compute ssh [server name]
+2. tar -cvzf output.tar.gz Fidelityv2/output
+3. New local terminal window
+4. gcloud compute scp [server name]:~/output.tar.gz  ~/Documents/
+
+Nuke Everything:
+
+1. gcloud compute ssh [server name]
+2. rm -rf *
